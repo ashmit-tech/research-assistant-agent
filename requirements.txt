@@ -1,0 +1,10 @@
+pydantic-ai>=0.0.15
+tavily-python
+firecrawl-sdk
+python-dotenv
+rich
+httpx
+markdown
+streamlit>=1.29.0
+streamlit-extras
+tiktoken>=0.5.0 
