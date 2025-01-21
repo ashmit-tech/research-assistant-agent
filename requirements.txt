@@ -6,5 +6,4 @@ rich
 httpx
 markdown
 streamlit>=1.29.0
-streamlit-extras
-tiktoken>=0.5.0 
+streamlit-extras 

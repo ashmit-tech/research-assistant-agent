@@ -1,91 +1,99 @@
-# AI Research Assistant
+# PyAI Research Assistant Agent
 
-An intelligent research assistant that generates detailed reports on any topic using PydanticAI, Tavily for search, and FireCrawl for web content extraction.
+A powerful research assistant that generates detailed reports on any topic using PydanticAI and Tavily's search API. The assistant uses advanced AI to create well-structured, properly cited research reports with real-time progress updates.
 
 ## Features
 
-- **Intelligent Search**: Uses Tavily's advanced search API to find relevant and reliable sources
-- **Smart Content Extraction**: Utilizes FireCrawl to extract clean, formatted content from web pages
-- **Advanced Content Processing**:
-  - Intelligent content chunking for handling large documents
-  - Token-aware processing to prevent context window limits
-  - Smart paragraph and sentence splitting
-  - Efficient memory usage
-- **Structured Reports**:
-  - Clear, engaging titles
-  - Comprehensive introductions
-  - Well-organized body sections
-  - Meaningful conclusions
-  - Properly cited sources with hyperlinks
-- **Quality Control**:
-  - Validates all sources and citations
-  - Ensures comprehensive coverage
-  - Maintains consistent structure
-  - Token-aware content processing
-- **User Interface**:
-  - Modern Streamlit web interface
-  - Clean and intuitive design
-  - Real-time progress updates
-  - Raw markdown preview option
-  - One-click report downloads
-- **Flexible Output**:
-  - Markdown formatting for readability
-  - Rich console output with progress indicators
-  - Automatic file saving with timestamps
-- **Error Handling**:
-  - Graceful handling of unsupported websites
-  - Smart URL validation with multiple format support
-  - Fallback content extraction methods
-  - Token limit management
+### Search and Research
 
-## Setup
+- Advanced semantic search using Tavily API
+- Intelligent source validation and citation
+- Real-time search result processing
+- Automatic content summarization
 
-1. Install the required dependencies:
+### Report Generation
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+- Well-structured research reports with proper citations
+- Smart section organization based on available sources
+- Automatic source validation and verification
+- Hyperlinked citations and references
 
-2. Set up your environment variables:
+### User Interface
 
-   Copy the example.env file to create your own .env file:
+- Modern Streamlit web interface
+- Clean and intuitive design
+- Real-time progress updates
+- Raw markdown preview option
+- One-click report downloads
 
-   ```bash
-   cp example.env .env
-   ```
+### Output Management
 
-   Then edit the `.env` file with your API keys:
+- Markdown-formatted reports
+- Automatic report saving with timestamps
+- Organized report storage in dedicated directory
+- Rich console output with progress indicators
 
-   ```
-   OPENAI_API_KEY=your_openai_api_key
-   TAVILY_API_KEY=your_tavily_api_key
-   FIRECRAWL_API_KEY=your_firecrawl_api_key
-   # Optional for alternative models
-   OPENROUTER_API_KEY=your_openrouter_api_key
-   ```
+### Error Handling
 
-   - Get your OpenAI API key from [OpenAI](https://platform.openai.com/api-keys)
-   - Get your Tavily API key from [Tavily](https://tavily.com)
-   - Get your FireCrawl API key from [FireCrawl](https://firecrawl.co)
-   - (Optional) Get your OpenRouter API key from [OpenRouter](https://openrouter.ai)
+- Graceful error recovery
+- Clear error messages and warnings
+- Smart retry mechanism for failed requests
+- Comprehensive error logging
 
-3. Version Control:
+## Installation
 
-   The project includes a `.gitignore` file that excludes:
+### Prerequisites
 
-   - Environment files (.env)
-   - Generated reports (reports/, research*report*\*.md)
-   - Python cache files (**pycache**/)
-   - Virtual environments (venv/, .env/)
-   - IDE settings (.vscode/, .idea/)
-   - Log files (.logfire/, \*.log)
-   - System files (.DS_Store)
+- Python 3.9+
+- Git
+- Conda (Recommended)
 
-   Make sure to never commit sensitive information like API keys to version control.
+### Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/dynamikapps/pyai-research-assistant-agent.git
+cd pyai-research-assistant-agent
+```
+
+2. Create and activate a conda environment:
+
+```bash
+conda create -n research-assistant python=3.9
+conda activate research-assistant
+```
+
+3. Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Create a `.env` file from the example:
+
+```bash
+cp example.env .env
+```
+
+5. Add your API keys to the `.env` file:
+
+```
+TAVILY_API_KEY=your_tavily_api_key
+OPENROUTER_API_KEY=your_openrouter_api_key
+```
 
 ## Usage
 
-### Web Interface (Recommended)
+### Command Line Interface
+
+Run the research assistant from the command line:
+
+```bash
+python research_assistant.py
+```
+
+### Web Interface
 
 Run the Streamlit web interface:
 
@@ -93,116 +101,65 @@ Run the Streamlit web interface:
 streamlit run streamlit_app.py
 ```
 
-This will open a browser window with the research assistant interface where you can:
+## Output Structure
 
-1. Enter your research topic
-2. Click "Generate Report" to start the research
-3. View the report with real-time progress updates
-4. Toggle between rendered and raw markdown views
-5. Download the report as a markdown file
-
-### Command Line Interface
-
-Alternatively, you can use the command-line interface:
-
-```bash
-python research_assistant.py
-```
-
-## Configuration Options
-
-### Language Models
-
-The assistant supports multiple language models:
-
-- Default: `openai:gpt-4o-mini`
-- Alternative models through OpenRouter (uncomment and modify in code):
-  ```python
-  model = OpenAIModel(
-      'deepseek/deepseek-chat',
-      base_url='https://openrouter.ai/api/v1',
-      api_key=openrouter_api_key,
-  )
-  ```
-
-### Search Configuration
-
-Tavily search can be configured with:
-
-- `search_depth`: "advanced" for comprehensive results
-- `include_raw_content`: True to get full content
-- Additional parameters available in Tavily documentation
-
-### Content Processing
-
-The assistant includes advanced content processing features:
-
-- **Token Management**:
-
-  - Automatically counts and manages tokens using tiktoken
-  - Prevents context window overflow
-  - Configurable chunk sizes (default: 8000 tokens)
-
-- **Content Chunking**:
-  - Smart paragraph-based splitting
-  - Sentence-level chunking for large paragraphs
-  - Context-aware content processing
-  - Memory-efficient operation
-
-### Content Extraction
-
-FireCrawl extraction supports:
-
-- Markdown format for structured content
-- Fallback to plain text when needed
-- Automatic handling of unsupported websites
-
-## Output Format
-
-The generated report includes:
+The research assistant generates well-structured reports in markdown format:
 
 ```markdown
-# Title
+# Research Title
 
 _Generated on YYYY-MM-DD HH:MM:SS_
 
 ## Introduction
 
-[Introduction content with hyperlinks]
+[Introduction content with context and scope]
+[Citations and hyperlinks to sources]
 
 ## [Body Section 1]
 
-[Section content with hyperlinks]
+[Section content with detailed analysis]
+[Citations and hyperlinks to sources]
 
 ## [Body Section 2]
 
-[Section content with hyperlinks]
+[Section content with detailed analysis]
+[Citations and hyperlinks to sources]
 
 ## Conclusion
 
-[Conclusion content with hyperlinks]
+[Summary and key findings]
+[Citations and hyperlinks to sources]
 
 ## Sources
 
 1. [Source Title](URL)
-   > Relevant quote or summary
+
+   > Relevant quote or summary from the source
+
+2. [Source Title](URL)
+   > Relevant quote or summary from the source
 ```
 
-## Error Handling
+### Report Features
 
-The assistant includes robust error handling for:
+- Clear section organization
+- Proper citation formatting
+- Hyperlinked references
+- Source summaries and quotes
+- Automatic timestamp
+- Consistent markdown styling
 
-- Unsupported websites
-- Invalid URLs
-- Failed content extraction
-- Network issues
-- API rate limits
-- Token limit exceeded scenarios
-- Memory constraints
+Reports are automatically saved in the `reports` directory with timestamps in the format: `research_report_YYYYMMDD_HHMMSS.md`
 
-Errors are displayed with color-coded messages in both the web interface and console:
+## API Keys
 
-- Red: Critical errors
-- Yellow: Warnings
-- Cyan: Progress updates
-- Green: Success messages
+- Get your Tavily API key from: [https://tavily.com](https://tavily.com)
+- Get your OpenRouter API key from: [https://openrouter.ai](https://openrouter.ai)
+
+## Contributing
+
+Feel free to open issues or submit pull requests for improvements.
+
+## License
+
+MIT License - see LICENSE file for details.
