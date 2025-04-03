@@ -1,6 +1,6 @@
 pydantic-ai>=0.0.15
 tavily-python
-firecrawl-sdk
+firecrawl-py
 python-dotenv
 rich
 httpx
