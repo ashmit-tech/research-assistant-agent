@@ -53,7 +53,7 @@ A powerful research assistant that generates detailed reports on any topic using
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/dynamikapps/pyai-research-assistant-agent.git
+git clone https://github.com/ashmit-tech/research-assistant-agent.git
 cd pyai-research-assistant-agent
 ```
 
